@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #1f2937;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 390px;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #4f46e5;
+    letter-spacing: 1px;
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 18px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 12px 30px rgba(79,70,229,0.08);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 16px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dbe2ff;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #f9faff;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 18px rgba(99,102,241,0.25);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* Switch */
+.switch {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.switch a {
+    color: #4f46e5;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
+
+/* Forgot password */
+.forgot-password {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    color: #6366f1;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Hidden group */
+#nameGroup {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">Create Account</div>
+
+    <div class="card">
+
+        <h2 id="title">Log in</h2>
+
+        <form id="authForm">
+
+            <div id="nameGroup" class="input-group">
+                <input type="text" id="fullname" placeholder="Full name">
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="forgot-password">
+                <a onclick="alert('Demo: Reset link would be sent')">
+                    Forgot password?
+                </a>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                Continue
+            </button>
+
+            <div class="switch">
+                <span id="switchText">
+                    Don't have an account?
+                </span>
+
+                <a id="toggleMode">
+                    Sign up
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+const form = document.getElementById('authForm');
+const toggleMode = document.getElementById('toggleMode');
+const title = document.getElementById('title');
+const nameGroup = document.getElementById('nameGroup');
+const switchText = document.getElementById('switchText');
+
+let isLogin = true;
+
+// Toggle Login / Signup
+toggleMode.addEventListener('click', () => {
+
+    isLogin = !isLogin;
+
+    if (isLogin) {
+
+        title.textContent = "Log in";
+        nameGroup.style.display = "none";
+        switchText.textContent = "Don't have an account?";
+        toggleMode.textContent = "Sign up";
+
+    } else {
+
+        title.textContent = "Sign up";
+        nameGroup.style.display = "block";
+        switchText.textContent = "Already have an account?";
+        toggleMode.textContent = "Log in";
+    }
+});
+
+// Form Submit
+form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    alert(
+        isLogin
+        ? "Demo: Login would process here"
+        : "Demo: Signup would process here"
+    );
+
+});
+
+</script>
+
+</body>
+</html>
